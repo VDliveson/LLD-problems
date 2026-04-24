@@ -92,7 +92,7 @@ func (s *SplitService) AddUserToGroup(groupId int, userId int) error {
 	if !exists {
 		return fmt.Errorf("group with id: %d does not exists", groupId)
 	}
-	s.mu.Unlock()
+	s.mu.RUnlock()
 
 	group.mu.Lock()
 	defer group.mu.Unlock()
